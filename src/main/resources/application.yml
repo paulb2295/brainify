@@ -1,0 +1,58 @@
+#Database connection properties
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/brainify_db
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  #JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  #MongoDb
+  data:
+    mongodb:
+      uri: YOUR_MONGODB_CONNECTION_STRING*
+      database: YOUR_MONGODB_DATABASE*
+
+#Logging properties
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org:
+      hibernate:
+        SQL: DEBUG
+      type:
+        descriptor:
+          sql:
+            BasicBinder: TRACE
+
+#App Security
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+
+#OpenAi
+openai:
+  api:
+    key: YOUR_OPENAI_TOKEN*
+    url:
+      embedding: https://api.openai.com/v1/embeddings
+      chat: https://api.openai.com/v1/chat/completions
+  model:
+    embedding: text-embedding-ada-002
+    chat: gpt-4
+  prompt:
+    summarize: summarize the following text ->
+    questions: Generate %d questions in romanian based on the following text and following these rules.\n Rules -> 1) Each question will have 5 answer options, some false, some true.\n 2) Answers will be annotated with a, b, c, d and e.\n 3) At the end of each question print the true options like this example [a,b,e].\n 4) The range of correct answers for each question will be between 1 and 4.\n 5) Each Question and each Answer should be contained between [ ] example [a) Answer a.].\n 6) After each Question-Answers block put $.\nText ->
