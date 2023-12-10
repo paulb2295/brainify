@@ -1,5 +1,6 @@
 package com.bpx.brainify.services.implementations;
 
+import com.bpx.brainify.enums.Role;
 import com.bpx.brainify.exceptions.NullRequiredValueException;
 import com.bpx.brainify.exceptions.ResourceNotFoundException;
 import com.bpx.brainify.exceptions.UserHasNoCoursesException;

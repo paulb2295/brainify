@@ -48,7 +48,7 @@ public class UserCourseServiceImpl implements UserCourseService {
                     .progress(0)
                     .build();
             UserCourse userCourseResponse = userCourseRepository.save(userCourse);
-            return user.getEmail() + " enrolled to " + course.getCourseName() + " in " + userCourseResponse.getEnrollment();
+            return user.getEmail() + " enrolled to " + course.getCourseName() + ".";
         } else {
             throw new ResourceNotFoundException("A course with this ID does not exist!");
         }

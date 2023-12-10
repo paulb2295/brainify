@@ -18,20 +18,4 @@ public class BrainifyApplication {
 		SpringApplication.run(BrainifyApplication.class, args);
 	}
 
-//	@Bean
-//	public CommandLineRunner commandLineRunner(
-//			AuthenticationService service
-//	) {
-//		return args -> {
-//			var admin = UserRegisterRequestDTO.builder()
-//					.firstName("Admin")
-//					.lastName("Admin")
-//					.email("admin@mail.com")
-//					.password("password")
-//					.role(ADMIN)
-//					.build();
-//			System.out.println("Admin token: " + service.register(admin).getAccessToken());
-//
-//		};
-//	}
 }
