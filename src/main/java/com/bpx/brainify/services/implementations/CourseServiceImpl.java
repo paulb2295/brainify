@@ -1,6 +1,6 @@
 package com.bpx.brainify.services.implementations;
 
-import com.bpx.brainify.enums.Role;
+import com.bpx.brainify.exceptions.CourseInstructorOwnershipException;
 import com.bpx.brainify.exceptions.NullRequiredValueException;
 import com.bpx.brainify.exceptions.ResourceNotFoundException;
 import com.bpx.brainify.exceptions.UserHasNoCoursesException;
@@ -65,7 +65,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public CourseDTO editCourse(CourseDTO courseDTO, Long courseId) {
+    public CourseDTO editCourse(CourseDTO courseDTO, Long courseId, Principal connectedUser) {
+        User user = (User) ((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
+        userCourseRepository.findEnrollmentByUserIdAndCourseId(user.getId(),courseId).orElseThrow(
+                () -> new CourseInstructorOwnershipException("The user is not the courses instructor!")
+        );
         Optional<Course> courseOptional = courseRepository.findById(courseId);
         if (courseOptional.isPresent()) {
             Course course = courseOptional.get();

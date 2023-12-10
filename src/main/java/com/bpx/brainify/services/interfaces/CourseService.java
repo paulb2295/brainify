@@ -14,5 +14,5 @@ public interface CourseService {
     List<CourseResponseDTO> instructorsCourses(Principal connectedUser);
 
 
-    CourseDTO editCourse(CourseDTO courseDTO, Long courseId);
+    CourseDTO editCourse(CourseDTO courseDTO, Long courseId, Principal connectedUser);
 }

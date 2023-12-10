@@ -114,6 +114,11 @@ public class ExceptionHandlerAdvice extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(objectToString(Map.of("message", invalidFilterParametersException.getMessage())), BAD_REQUEST);
     }
 
+    @ExceptionHandler(CourseInstructorOwnershipException.class)
+    public ResponseEntity<String> courseInstructorException (CourseInstructorOwnershipException courseInstructorOwnershipException) {
+        return new ResponseEntity<>(objectToString(Map.of("message", courseInstructorOwnershipException.getMessage())), NOT_FOUND);
+    }
+
     private String objectToString(Object response) {
         try {
             return objectMapper.writeValueAsString(response);

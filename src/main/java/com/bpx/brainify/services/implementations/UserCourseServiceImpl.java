@@ -29,11 +29,9 @@ import java.util.*;
 @Service
 public class UserCourseServiceImpl implements UserCourseService {
 
-    private final UserRepository userRepository;
     private final CourseRepository courseRepository;
     private final UserCourseRepository userCourseRepository;
     private final ObjectMapper objectMapper;
-    private final ModuleRepository moduleRepository;
 
     @Override
     public String enrollToCourse(Principal connectedUser, Long courseId) {

@@ -32,8 +32,9 @@ public class CourseController {
 
     @PatchMapping("/{courseId}")
     public ResponseEntity<CourseDTO> editCourse(@RequestBody CourseDTO courseDTO,
-                                                @PathVariable Long courseId) {
-        return ResponseEntity.ok(courseService.editCourse(courseDTO, courseId));
+                                                @PathVariable Long courseId,
+                                                Principal connectedUser) {
+        return ResponseEntity.ok(courseService.editCourse(courseDTO, courseId, connectedUser));
     }
 
 
