@@ -1,6 +1,7 @@
 package com.bpx.brainify.security;
 
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -60,11 +61,11 @@ public class SecurityConfiguration {
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**").allowedOrigins("https://localhost:7277");
+            public void addCorsMappings(@NotNull CorsRegistry registry) {
+                //registry.addMapping("/api/**").allowedOrigins("https://localhost:7277");
+                registry.addMapping("/api/**").allowedOrigins("https://localhost:3000");
             }
         };
     }
-
 
 }

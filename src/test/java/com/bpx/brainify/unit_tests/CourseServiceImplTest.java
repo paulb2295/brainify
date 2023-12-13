@@ -9,7 +9,6 @@ import com.bpx.brainify.repositories.CourseRepository;
 import com.bpx.brainify.repositories.UserCourseRepository;
 import com.bpx.brainify.services.implementations.CourseServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,12 +19,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+
 
 @ExtendWith(MockitoExtension.class)
 public class CourseServiceImplTest {
@@ -43,7 +41,7 @@ public class CourseServiceImplTest {
     private CourseServiceImpl courseService;
 
     @Test
-    void createCourseShouldPass(){
+    void createCourseShouldPass() {
         //given
         User user = User.builder()
                 .id(1L)
@@ -78,8 +76,11 @@ public class CourseServiceImplTest {
         //when
         CourseDTO savedCourseDTO = courseService.createCourse(courseDTO, mockPrincipal);
         //then
-        Assertions.assertEquals(courseDTO,savedCourseDTO);
+        Assertions.assertEquals(courseDTO, savedCourseDTO);
     }
+
+
+
 
 
 }

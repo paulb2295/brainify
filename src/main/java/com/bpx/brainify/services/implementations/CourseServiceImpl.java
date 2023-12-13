@@ -73,7 +73,7 @@ public class CourseServiceImpl implements CourseService {
         Optional<Course> courseOptional = courseRepository.findById(courseId);
         if (courseOptional.isPresent()) {
             Course course = courseOptional.get();
-            if (courseDTO.getCourseName() != null && courseDTO.getCourseName().isEmpty()) {
+            if (courseDTO.getCourseName() != null && !courseDTO.getCourseName().isEmpty()) {
                 course.setCourseName(courseDTO.getCourseName());
                 return objectMapper.convertValue(courseRepository.save(course), CourseDTO.class);
             }

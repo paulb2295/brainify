@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RequestMapping("/api/chapter")
+@RequestMapping("/api/chapters")
 @RestController
 public class ChapterController {
     private final ChapterService chapterService;

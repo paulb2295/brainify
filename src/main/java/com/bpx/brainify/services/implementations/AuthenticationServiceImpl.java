@@ -146,4 +146,5 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         userClaims.put("role", user.getRole());
         return userClaims;
     }
+
 }

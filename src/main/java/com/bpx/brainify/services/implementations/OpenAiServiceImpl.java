@@ -61,7 +61,7 @@ public class OpenAiServiceImpl implements OpenAiService {
             requestBodyMap.put("encoding_format", "float");
             String requestBodyString = objectMapper.writeValueAsString(requestBodyMap);
             MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
-            RequestBody requestBody = RequestBody.create(requestBodyString, mediaType); //aici am modificat
+            RequestBody requestBody = RequestBody.create(requestBodyString, mediaType);
 
             Request request = new Request.Builder()
                     .url(embeddingUrl)
